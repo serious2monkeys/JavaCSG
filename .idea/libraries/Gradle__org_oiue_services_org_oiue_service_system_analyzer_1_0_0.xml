@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.oiue.services:org.oiue.service.system.analyzer:1.0.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.oiue.services/org.oiue.service.system.analyzer/1.0.0/275e1f83a6d8f10c6eef1f91984f42f3de476e2b/org.oiue.service.system.analyzer-1.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.oiue.services/org.oiue.service.system.analyzer/1.0.0/d3c177dd2f5e27a9b0912d8ecee911526cefaecc/org.oiue.service.system.analyzer-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

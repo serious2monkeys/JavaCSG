@@ -6,23 +6,12 @@ apply from: 'libs/gradle/javafx.plugin'
 sourceCompatibility = '1.8'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
-// NetBeans will automatically add "run" and "debug" tasks relying on the
-// "mainClass" property. You may however define the property prior executing
-// tasks by passing a "-PmainClass=<QUALIFIED_CLASS_NAME>" argument.
-//
-// Note however, that you may define your own "run" and "debug" task if you
-// prefer. In this case NetBeans will not add these tasks but you may rely on
-// your own implementation.
 if (!hasProperty('mainClass')) {
-    ext.mainClass = 'eu.mihosoft.vrl.fxscad.JFXScad'
+    ext.mainClass = 'ru.doronin.jcsg.JFXScad'
 }
 
 repositories {
     mavenCentral()
-
-    //    maven {
-    //        url 'https://oss.sonatype.org/content/repositories/snapshots/' 
-    //    }
 }
 
 task wrapper(type: Wrapper) {
@@ -33,75 +22,35 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.10'
 
     compile group: 'org.fxmisc.richtext', name: 'richtextfx', version: '0.6.9'
-//    compile group: 'org.fxmisc.richtext', name: 'richtextfx', version: '0.6.9', classifier: 'sources'
-  
-    //    compile group: 'org.codehaus.groovy', name: 'groovy', version:'2.3.0-SNAPSHOT';
-    //    compile group: 'org.codehaus.groovy', name: 'groovy', version:'2.3.0-SNAPSHOT', classifier: 'sources';
-    //    compile group: 'org.codehaus.groovy', name: 'groovy', version:'2.3.0-SNAPSHOT', classifier: 'javadoc';
 
-    compile group: 'org.codehaus.groovy', name: 'groovy', version:'2.3.7';
-    compile group: 'org.codehaus.groovy', name: 'groovy', version:'2.3.7', classifier: 'sources';
-    compile group: 'org.codehaus.groovy', name: 'groovy', version:'2.3.7', classifier: 'javadoc';
-    
+    compile group: 'org.codehaus.groovy', name: 'groovy', version: '2.3.7';
+    compile group: 'org.codehaus.groovy', name: 'groovy', version: '2.3.7', classifier: 'sources';
+    compile group: 'org.codehaus.groovy', name: 'groovy', version: '2.3.7', classifier: 'javadoc';
+
     compile group: 'org.controlsfx', name: 'controlsfx', version: '8.0.6'
     compile group: 'org.controlsfx', name: 'controlsfx', version: '8.0.6', classifier: 'sources'
-    
+
+    compile 'org.oiue.services:org.oiue.service.log4j:1.0.0'
+    compile 'javax.vecmath:vecmath:1.5.2'
     compile 'commons-io:commons-io:2.4'
-    
-    compile fileTree (dir: 'libs/', includes: ['*.jar'])
+
+    compile fileTree(dir: 'libs/', includes: ['*.jar'])
+
 }
 
-// create a fat-jar (class files plus dependencies
-// excludes VRL.jar (plugin jar files must not start with 'vrl-\\d+')
-jar {
-//
-//    // dependencies except VRL
-//    from configurations.runtime.asFileTree.
-//        filter({file->return !file.name.startsWith("vrl-0")}).
-//        files.collect { zipTree(it) }
-//
-//    // project class files compiled from source
-//    from files(sourceSets.main.output.classesDir)
-//    
-//    manifest { attributes 'Main-Class': mainClass }
-}
-
-//task run(type: JavaExec) {
-//    classpath = sourceSets.main.runtimeClasspath
-//    main = mainClass;
-//    jvmArgs = ['-Dprism.forceGPU=true', '-Dprism.verbose=true', '-Dprism.order=es2,d3d,sw']
-////    jvmArgs = ['-Dprism.forceGPU=true']
-//}
 
 javafx {
-    appID 'eu.mihosoft.jfxscad'
+    appID 'ru.doronin.jfxscad'
     appName 'JFXScad'
     mainClass project.mainClass
-    
-    // deploy/info attributes
+
     category = 'JFXScad'
-    copyright = 'Copyright (c) 2015 Michel Hoffer (info@michaelhoffer.de)'
-    description = 'JFXScad'
-    licenseType = 'Open Source'
-    vendor = 'Michael Hoffer'
     installSystemWide = false
     menu = true
     shortcut = true
-    
-//    // app icons
-//    icons {
-//        shortcut = ['shortcut-16.png', 'shortcut-32.png', 'shortcut-128.png', 'shortcut-256.png', 'shortcut-16@2x.png', 'shortcut-32@2x.png', 'shortcut-128@2x.png']
-//        volume = 'javafx-icon.png'
-//        setup = 'javafx-icon.png'
-//    }
-
-//    icons {
-//        shortcut = ['event-handler-icon-01.png']
-//    }
 }
 
- jfxDeploy {
-//    packaging = "installer"
+jfxDeploy {
     packaging = "image"
     verbose = true
- }
+}

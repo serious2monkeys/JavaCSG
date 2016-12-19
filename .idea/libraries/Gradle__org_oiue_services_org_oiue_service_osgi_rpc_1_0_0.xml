@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.oiue.services:org.oiue.service.osgi.rpc:1.0.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.oiue.services/org.oiue.service.osgi.rpc/1.0.0/28f2c31b41209715979c197476ff0ddbf073deb4/org.oiue.service.osgi.rpc-1.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.oiue.services/org.oiue.service.osgi.rpc/1.0.0/d62405414581cd2fe5b06f4f4abe87aa2205d32a/org.oiue.service.osgi.rpc-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

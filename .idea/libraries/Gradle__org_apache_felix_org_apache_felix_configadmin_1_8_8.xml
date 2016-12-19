@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.felix:org.apache.felix.configadmin:1.8.8">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.felix/org.apache.felix.configadmin/1.8.8/21a5ffd5f2598a77bf81c6306a3cab63a5786c04/org.apache.felix.configadmin-1.8.8.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.felix/org.apache.felix.configadmin/1.8.8/95558bca5b58cf5bd6b12ad239f2da51fcdfdcb1/org.apache.felix.configadmin-1.8.8-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

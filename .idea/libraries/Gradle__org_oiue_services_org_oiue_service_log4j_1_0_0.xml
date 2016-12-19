@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.oiue.services:org.oiue.service.log4j:1.0.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.oiue.services/org.oiue.service.log4j/1.0.0/5d743c47677b16de432ea5f62c4d41869ef38b15/org.oiue.service.log4j-1.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.oiue.services/org.oiue.service.log4j/1.0.0/a6234761fb05d75ceaa23404e505c3ab29665d4c/org.oiue.service.log4j-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
