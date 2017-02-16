@@ -1,2 +1,11 @@
 /build/
 /.nb-gradle/private/
+.gradle/
+moebius-stairs.mtl
+moebius-stairs.obj
+moebius-stairs.stl
+src/deploy/
+src/main/resources/ru/doronin/jcsg/2016/
+src/package/
+src/test/
+.idea
