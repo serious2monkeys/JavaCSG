@@ -1,6 +1,6 @@
 JavaCSG
 
-JavaFX 3D Visualizing IDE based on [JCSG](https://github.com/miho/JCSG) and [JFXSCad](https://github.com/miho/JFXScad).
+JavaFX 3D Visualizing IDE based on [JCSG](https://github.com/miho/JCSG) and [JFXScad](https://github.com/miho/JFXScad).
 
 ### Requirements
 
