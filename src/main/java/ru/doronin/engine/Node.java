@@ -38,6 +38,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static ru.doronin.engine.PlaneUtils.choosePlane;
+
 /**
  Содержит узел BSP - дерева
  */
@@ -143,7 +145,7 @@ public class Node {
         List<Polygon> backP = new ArrayList<>();
 
         for (Polygon polygon : polygons) {
-            this.plane.splitPolygon(polygon, frontP, backP, frontP, backP);
+            this.plane.splitPolygon(polygon, frontP, backP);
         }
         if (this.front != null) {
             frontP = this.front.clipPolygons(frontP);
@@ -186,6 +188,7 @@ public class Node {
         return localPolygons;
     }
 
+
     /**
      * Построение дерева на основе переданного списка полигонов
      */
@@ -193,17 +196,17 @@ public class Node {
 
         if (polygons.isEmpty()) return;
 
-        List<Polygon> faces = polygons.stream().sorted((Polygon first, Polygon second) ->
-                first.plane.dist > second.plane.dist ? -1 : 1).collect(Collectors.toList());
-
         if (this.plane == null) {
-            this.plane = faces.get(0).plane.clone();
+            Polygon chosen = choosePlane(polygons);
+            this.polygons.add(chosen);
+            this.plane = chosen.plane.clone();
+            polygons.remove(chosen);
         }
 
         List<Polygon> frontP = new ArrayList<>();
         List<Polygon> backP = new ArrayList<>();
 
-        faces.stream().forEach((polygon) -> this.plane.splitPolygon(polygon, this.polygons, this.polygons, frontP, backP));
+        polygons.stream().forEach((polygon) -> this.plane.splitPolygon(polygon, frontP, backP));
 
         if (frontP.size() > 0) {
             if (this.front == null) {

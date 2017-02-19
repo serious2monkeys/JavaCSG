@@ -52,6 +52,11 @@ public class Plane {
      */
     public static final double EPSILON = 1e-6;
 
+    public final static int COPLANAR = 0;
+    public final static int FRONT = 1;
+    public final static int BACK = 2;
+    public final static int SPANNING = 3; // == some in the FRONT + some in the BACK
+
     /**
      * XY plane.
      */
@@ -113,6 +118,22 @@ public class Plane {
     }
 
     /**
+     * Определение расположения многоугольника относительно текущей плоскости
+     *
+     * @param polygon - многоугольник
+     * @return
+     */
+    public int classifyPolygon(Polygon polygon) {
+        int polygonType = 0;
+        for (int i = 0; i < polygon.vertices.size(); i++) {
+            double t = this.normal.dot(polygon.vertices.get(i).pos) - this.dist;
+            int type = (t < -Plane.EPSILON) ? BACK : (t > Plane.EPSILON) ? FRONT : COPLANAR;
+            polygonType |= type;
+        }
+        return polygonType;
+    }
+
+    /**
      * Splits a {@link Polygon} by this plane if needed. After that it puts the
      * polygons or the polygon fragments in the appropriate lists
      * ({@code front}, {@code back}). Coplanar polygons go into either
@@ -121,22 +142,13 @@ public class Plane {
      * plane go into either {@code front} or {@code back}.
      *
      * @param polygon       polygon to split
-     * @param coplanarFront "coplanar front" polygons
-     * @param coplanarBack  "coplanar back" polygons
      * @param front         front polygons
      * @param back          back polgons
      */
     public void splitPolygon(
             Polygon polygon,
-            List<Polygon> coplanarFront,
-            List<Polygon> coplanarBack,
             List<Polygon> front,
             List<Polygon> back) {
-        final int COPLANAR = 0;
-        final int FRONT = 1;
-        final int BACK = 2;
-        final int SPANNING = 3; // == some in the FRONT + some in the BACK
-
         // Classify each point as well as the entire polygon into one of the 
         // above four classes.
         int polygonType = 0;
@@ -153,8 +165,12 @@ public class Plane {
         switch (polygonType) {
             case COPLANAR:
                 //System.out.println(" -> coplanar");
-                (this.normal.dot(polygon.plane.normal) > 0 ? coplanarFront : coplanarBack).add(polygon);
-                break;
+                //(this.normal.dot(polygon.plane.normal) > 0 ? coplanarFront : coplanarBack).add(polygon);
+
+                //front.add(polygon);
+                //back.add(polygon);
+
+                //break;
             case FRONT:
                 //System.out.println(" -> front");
                 front.add(polygon);
